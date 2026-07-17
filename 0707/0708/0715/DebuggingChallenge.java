@@ -19,8 +19,8 @@ public class DebuggingChallenge {
         System.out.print("請輸入指令：");
         String command = sc.nextLine();
 
-        if (command == "exit") {
-            System.out.println("系統結束，年齡：" + age)
+        if (command.equals("exit")) {
+            System.out.println("系統結束，年齡：" + age);
         }
 
         sc.close();
