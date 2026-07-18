@@ -4,62 +4,45 @@ public class Product {
     private int stock;
 
     public Product(String name, int price, int stock) {
-        if (name == null || name.trim().isEmpty()) {
-            this.name = "Unnamed";
-        } else {
-            this.name = name.trim();
-        }
-
-        this.price = Math.max(price, 1);
-        this.stock = Math.max(stock, 0);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public int getStock() {
-        return stock;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
     }
 
     public boolean setPrice(int price) {
-        if (price <= 0) {
-            return false;
+        if (price >= 0) {
+            this.price = price;
+            return true; 
         }
-        this.price = price;
-        return true;
+        return false; 
     }
 
-    public boolean restock(int quantity) {
-        if (quantity <= 0) {
-            return false;
+    public boolean restock(int amount) {
+        if (amount > 0) {
+            this.stock += amount;
+            return true; 
         }
-        stock += quantity;
-        return true;
+        return false;
     }
 
-    public boolean sell(int quantity) {
-        if (quantity <= 0 || quantity > stock) {
-            return false;
+    public boolean sell(int amount) {
+        if (amount > 0 && this.stock >= amount) {
+            this.stock -= amount;
+            return true; 
         }
-        stock -= quantity;
-        return true;
+        return false; 
     }
 
     public boolean isLowStock() {
-        return stock < 10;
+        return this.stock <= 5;
     }
 
-    public long getInventoryValue() {
-        return (long) price * stock;
+    public int getInventoryValue() {
+        return this.price * this.stock;
     }
 
     @Override
     public String toString() {
-        return name + "，價格：" + price + "，庫存：" + stock;
+        return "商品: " + name + ", 價格: " + price + " 元, 庫存: " + stock;
     }
 }

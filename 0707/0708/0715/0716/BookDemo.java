@@ -6,6 +6,5 @@ public class BookDemo {
         System.out.println(first);
         System.out.println(second);
         System.out.println("第一本書名：" + first.getTitle());
-        System.out.println("第二本書名：" + second.getTitle());
     }
 }

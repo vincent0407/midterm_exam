@@ -15,20 +15,20 @@ public class Rectangle {
         return height;
     }
 
-    public boolean setWidth(double width) {
-        if (width <= 0) {
-            return false;
+    public void setWidth(double width) {
+        if (width > 0) {
+            this.width = width;
+        } else {
+            System.out.println("錯誤：寬度必須為正數！設定失敗。");
         }
-        this.width = width;
-        return true;
     }
 
-    public boolean setHeight(double height) {
-        if (height <= 0) {
-            return false;
+    public void setHeight(double height) {
+        if (height > 0) {
+            this.height = height;
+        } else {
+            System.out.println("錯誤：高度必須為正數！設定失敗。");
         }
-        this.height = height;
-        return true;
     }
 
     public double calculateArea() {
@@ -40,11 +40,11 @@ public class Rectangle {
     }
 
     public boolean isSquare() {
-        return Double.compare(width, height) == 0;
+        return width == height;
     }
 
     @Override
     public String toString() {
-        return "寬：" + width + "，高：" + height;
+        return "矩形 [寬: " + width + ", 高: " + height + "]";
     }
 }
